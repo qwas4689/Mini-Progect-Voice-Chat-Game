@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Sensor : MonoBehaviour
 {
     public Slider slider;
 
-    public float socre { get; private set; }
+    public float score { get; private set; }
+    public bool eventOperation { get; set; }
 
     private float inputF = 0f;
     private float float0f = 0f;
 
+    public UnityEvent upSocreEvent;
+
     void Awake()
     {
-        socre = 0;    
+        score = 0;
+        upSocreEvent = new UnityEvent();
     }
 
     private void OnTriggerStay(Collider other)
@@ -26,12 +31,12 @@ public class Sensor : MonoBehaviour
             {
                 inputF += Time.deltaTime;
                 slider.value += inputF * 0.006f;
-                                
+
                 if (inputF > 3f)
                 {
-                    slider.gameObject.SetActive(false);
-                    socre += 0.5f;
                     Destroy(other.gameObject);
+                    upScore();
+                    inputF = 0f;
                 }
             }
             else
@@ -39,6 +44,10 @@ public class Sensor : MonoBehaviour
                 inputF = float0f;
                 slider.value = float0f;
             }
+        }
+        else
+        {
+            slider.gameObject.SetActive(false);
         }
     }
 
@@ -50,5 +59,12 @@ public class Sensor : MonoBehaviour
             slider.value = float0f;
             slider.gameObject.SetActive(false);
         }
+    }
+
+    public void upScore()
+    {
+        eventOperation = true;
+        ++score;
+        Debug.Log(score);
     }
 }
