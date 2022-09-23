@@ -11,11 +11,7 @@ public class MonsterManager : MonoBehaviour
     private Transform[] monsterSpwanePosition;
 
     private int index;
-
-    void Awake()
-    {
-        index = Random.Range(0, 8);
-    }
+    private int totalMonstersNumber = 8;
 
     void Start()
     {
@@ -28,7 +24,12 @@ public class MonsterManager : MonoBehaviour
         {
             Instantiate(monsterPrefab, monsterSpwanePosition[index].position, Quaternion.identity);
             yield return new WaitForSeconds(15f);
-            index = Random.Range(0, 8);
+            index = Random.Range(0, totalMonstersNumber);
         }
+    }
+
+    private void randomIndex()
+    {
+        index = Random.Range(0, totalMonstersNumber);
     }
 }
