@@ -20,25 +20,11 @@ public class ScoreUI : MonoBehaviour
 
     void Start()
     {
-        sensor.upSocreEvent.AddListener(sensor.upScore);
+        sensor.upScoreEvent.AddListener(updateScoreUI);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (sensor.eventOperation)
-        {
-            updateScoreUI(sensor.score);
-            sensor.eventOperation = false;
-            
-        }
-
-    }
-
-    private void updateScoreUI(float score)
+    public void updateScoreUI(float score)
     {
         _scoreUI.text = $"{score} / 3";
     }
-
-
 }

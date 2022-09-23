@@ -8,18 +8,29 @@ public class Sensor : MonoBehaviour
 {
     public Slider slider;
 
-    public float score { get; private set; }
     public bool eventOperation { get; set; }
 
     private float inputF = 0f;
     private float float0f = 0f;
 
-    public UnityEvent upSocreEvent;
+    public UnityEvent<float> upScoreEvent;
+    private float score;
+    public float Score
+    {
+        get
+        {
+            return score;
+        }
+        private set
+        {
+            score = value;
+            upScoreEvent.Invoke(score);
+        }
+    }
 
     void Awake()
     {
-        score = 0;
-        upSocreEvent = new UnityEvent();
+        Score = 0;
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,6 +47,7 @@ public class Sensor : MonoBehaviour
                 {
                     Destroy(other.gameObject);
                     upScore();
+
                     inputF = 0f;
                 }
             }
@@ -63,8 +75,6 @@ public class Sensor : MonoBehaviour
 
     public void upScore()
     {
-        eventOperation = true;
-        ++score;
-        Debug.Log(score);
+        ++Score;
     }
 }
