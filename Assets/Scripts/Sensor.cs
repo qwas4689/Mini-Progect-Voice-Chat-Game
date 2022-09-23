@@ -49,6 +49,7 @@ public class Sensor : MonoBehaviour
                     upScore();
 
                     inputF = 0f;
+
                 }
             }
             else
