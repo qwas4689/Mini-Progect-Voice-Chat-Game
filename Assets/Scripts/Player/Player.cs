@@ -15,17 +15,21 @@ public class Player : MonoBehaviourPun
 
     public void Update()
     {
-        if(false == photonView.IsMine)
-        {
-            return;
-        }
-        moveDir.x = Input.GetAxis("Horizontal");
-        moveDir.z = Input.GetAxis("Vertical");
+        
+        
+            if (false == photonView.IsMine)
+            {
+                return;
+            }
+            moveDir.x = Input.GetAxis("Horizontal");
+            moveDir.z = Input.GetAxis("Vertical");
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Attack();
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack();
+            }
+        
+
     }
 
     public void FixedUpdate()

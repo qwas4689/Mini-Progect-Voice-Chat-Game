@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool canPlayerMove = true; 
-    public static bool isOpenUI = false;  
+    public static bool canPlayerMove = false; 
+    public static bool isOpenUI = true;  
 
     void Update()
     {
@@ -15,10 +15,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {           
-
             canPlayerMove = true;
         }
-
-
     }
 }
