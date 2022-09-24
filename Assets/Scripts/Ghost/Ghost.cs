@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-    [SerializeField]
-    private float delay;
-
-    private GhostSpawer ghostSpawer;
+    public static GhostSpawer Spawner { get; set; } = null;
 
     private float elapsedTime;
-    private bool isMoving = false;
     private Vector3 startPosition;
-    public Vector3 EndPosition { get; set; }
+    private Vector3 endPosition;
     void Start()
     {
-        ghostSpawer = gameObject.transform.parent.GetComponent<GhostSpawer>();
         startPosition = transform.position;
+        endPosition = transform.position + transform.forward * Spawner.mapSize;
     }
-
     void Update()
     {
-            transform.position = Vector3.Lerp(startPosition, EndPosition, elapsedTime / delay);  
+        elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / Spawner.delay);  
     }
 }

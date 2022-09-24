@@ -4907,6 +4907,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ghost: {fileID: 2056762508747953175, guid: ef0a94614e091cb4ba786635acd9bf1d, type: 3}
+  delay: 10
+  mapSize: 0
   randNum: 0
 --- !u!4 &1956171292
 Transform:
