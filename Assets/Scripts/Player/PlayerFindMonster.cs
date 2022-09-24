@@ -5,21 +5,24 @@ using UnityEngine.Events;
 
 public class PlayerFindMonster : MonoBehaviour
 {
-    public UnityEvent _playerFindMonster;
 
-    private void Awake()
+
+    private void Start()
     {
-        _playerFindMonster = new UnityEvent();
+
     }
 
+    private void Update()
+    {
+
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Monster")
         {
-
-            Debug.Log("EnterMonster");
-
+            UIManager.Instance._playerFindMonster.Invoke();
         }
     }
 
@@ -27,9 +30,10 @@ public class PlayerFindMonster : MonoBehaviour
     {
         if (other.gameObject.tag == "Monster")
         {
-
-            Debug.Log("ExitMonster");
+            UIManager.Instance._playerMissingMonster.Invoke();
 
         }
     }
+
+
 }
