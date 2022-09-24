@@ -111,4 +111,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 10
-  ghostSpawer: {fileID: 0}

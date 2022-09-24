@@ -16,9 +16,6 @@ public class GhostSpawer : MonoBehaviour
     private GameObject ghost;
 
     private Dir dir;
-    private Vector3 ghostSpawnPosition;
-    private Vector3 startPosition;
-    private Vector3 endPosition;
     public int randNum;
 
     private Vector3[][] g_pos;
@@ -71,8 +68,15 @@ public class GhostSpawer : MonoBehaviour
     {
         foreach (Vector3 pos in g_pos[randNum])
         {         
-            Instantiate(ghost, pos, Quaternion.identity, gameObject.transform);
+            GameObject newGhost = Instantiate(ghost, pos, Quaternion.identity, gameObject.transform);
+
+            newGhost.GetComponent<Ghost>().EndPosition = Vector3. * 20;
         }
+    }
+
+    private void CheckGhost()
+    {
+
     }
 }
 
