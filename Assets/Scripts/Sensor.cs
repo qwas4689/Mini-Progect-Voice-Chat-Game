@@ -6,15 +6,15 @@ using UnityEngine.Events;
 
 public class Sensor : MonoBehaviour
 {
+    public UnityEvent<float> upScoreEvent;
     public Slider slider;
 
     public bool eventOperation { get; set; }
 
     private float inputF = 0f;
-    private float float0f = 0f;
-
-    public UnityEvent<float> upScoreEvent;
+    private const float initNumber = 0f;
     private float score;
+
     public float Score
     {
         get
@@ -35,7 +35,7 @@ public class Sensor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "MonsterSensor")
+        if (other.gameObject.tag == "Monster")
         {
             slider.gameObject.SetActive(true);
             if (Input.GetKey(KeyCode.F))
@@ -49,13 +49,12 @@ public class Sensor : MonoBehaviour
                     upScore();
 
                     inputF = 0f;
-
                 }
             }
             else
             {
-                inputF = float0f;
-                slider.value = float0f;
+                inputF = initNumber;
+                slider.value = initNumber;
             }
         }
         else
@@ -66,10 +65,10 @@ public class Sensor : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "MonsterSensor")
+        if (other.gameObject.tag == "Monster")
         {
-            inputF = float0f;
-            slider.value = float0f;
+            inputF = initNumber;
+            slider.value = initNumber;
             slider.gameObject.SetActive(false);
         }
     }

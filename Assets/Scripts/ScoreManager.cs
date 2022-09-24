@@ -4,12 +4,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 
-
-public class ScoreUI : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
     public TextMeshProUGUI _scoreUI;
 
-    Sensor sensor;
+    private Sensor sensor;
 
     // Start is called before the first frame update
     void Awake()
