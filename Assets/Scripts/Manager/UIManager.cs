@@ -10,18 +10,20 @@ public class UIManager : SingletonBehaviour<UIManager>
     public Slider CapturingSlider;
     public TextMeshProUGUI _scoreUI;
 
-
     public UnityEvent _playerFindMonster;
     public UnityEvent _playerMissingMonster;
+    public UnityEvent _upScore;
 
+    private int score = 0;
 
     private void Awake()
     {
         CapturingSlider.gameObject.SetActive(false);
         _playerFindMonster = new UnityEvent();
         _playerMissingMonster = new UnityEvent();
+        _upScore = new UnityEvent();
 
-        _scoreUI.text = $"0 / 3";
+        _scoreUI.text = $"{score} / 3";
 
     }
 
@@ -30,6 +32,7 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         _playerFindMonster.AddListener(OnCapturingSlider);
         _playerMissingMonster.AddListener(OffCapturingSlider);
+        _upScore.AddListener(AddScore);
 
     }
 
@@ -49,8 +52,9 @@ public class UIManager : SingletonBehaviour<UIManager>
         CapturingSlider.gameObject.SetActive(false);
     }
 
-    public void updateScoreUI(float score)
+    public void AddScore()
     {
+        ++score;
         _scoreUI.text = $"{score} / 3";
     }
 }

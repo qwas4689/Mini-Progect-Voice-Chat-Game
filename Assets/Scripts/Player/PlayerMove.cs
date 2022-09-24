@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviourPun
 {
     [SerializeField]
-    private Rigidbody rigidbody;
+    private Rigidbody _rigidbody;
 
     private Vector3 moveDir;
     private float moveSpeed = 3.0f;
@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviourPun
         {
             return;
         }
-        rigidbody.MovePosition(transform.position + moveDir * (moveSpeed * Time.fixedDeltaTime));
+        _rigidbody.MovePosition(transform.position + moveDir * (moveSpeed * Time.fixedDeltaTime));
     }
 
     

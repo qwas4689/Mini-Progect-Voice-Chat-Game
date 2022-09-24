@@ -51,10 +51,12 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
+            Debug.Log("´ï");
             PhotonNetwork.JoinRandomRoom();
         }
         else
         {
+            Debug.Log("¾È´ï");
             PhotonNetwork.ConnectUsingSettings();
         }
     }
@@ -70,6 +72,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("OnJoinRoom");
-        PhotonNetwork.LoadLevel("Main");
+        PhotonNetwork.LoadLevel("MiniGame");
     }
 }

@@ -551,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ace13a1b5675874a8252cd4bd71deb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 1169125116386548440}
+  _rigidbody: {fileID: 1169125116386548440}
 --- !u!114 &1169125116386548441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,7 +615,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169125116386548446}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1.5
@@ -632,9 +632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e419f9e07155478b636897b6e3375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerFindMonster:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1247845546894494915
 GameObject:
   m_ObjectHideFlags: 0
