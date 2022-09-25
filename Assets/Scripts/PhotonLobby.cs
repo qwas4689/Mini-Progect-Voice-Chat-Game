@@ -65,7 +65,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("OnJoinRandomFailed");
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 4 });
+        PhotonNetwork.CreateRoom("TESTROOM");
     }
 
     // 룸에 참가 완료된 경우 자동 실행
@@ -73,5 +73,17 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     {
         Debug.Log("OnJoinRoom");
         PhotonNetwork.LoadLevel("MiniGame");
+    }
+
+    public override void OnCreatedRoom()
+    {
+        Debug.Log("OnCreatedRoom");
+        PhotonNetwork.LoadLevel("MiniGame");
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("FailedCreateRoom");
+        Debug.Log($"Message : {message}");
     }
 }

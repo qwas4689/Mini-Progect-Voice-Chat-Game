@@ -18,10 +18,9 @@ public class GhostSpawer : MonoBehaviourPun
     public float delay;
     public float mapSize;
 
-    private Dir dir;
     public int randNum;
 
-    private Vector3[][] g_pos;
+    private Vector3[][] ghostPos;
      
     // [동/서/남/북][0번째 고스트 위치 어디어디어디] -> 9.5 / 0.5 / 10.5
     //              [1번째 고스트 위치 어디어디어디] -> 9.5 / 0.5 / 5.5
@@ -29,32 +28,32 @@ public class GhostSpawer : MonoBehaviourPun
     {
         Ghost.Spawner = this;
 
-        g_pos = new Vector3[(int)Dir.Dir_Max][];
+        ghostPos = new Vector3[(int)Dir.Dir_Max][];
 
         for (int i = 0; i < 4; i++)
         {
-            g_pos[i] = new Vector3[5];
+            ghostPos[i] = new Vector3[5];
             for (int j = 0; j < 5; j++)
             {
                 if (i == 0)
                 {
-                    g_pos[i][j] = new Vector3(9.5f - 5 * j, 0.5f, -9.5f);   // 남쪽
+                    ghostPos[i][j] = new Vector3(9.5f - 5 * j, 0.5f, -9.5f);   // 남쪽
                 }
                 else if (i == 1)
                 {
-                    g_pos[i][j] = new Vector3(-10.5f, 0.5f, -9.5f + 5 * j);  // 서쪽
+                    ghostPos[i][j] = new Vector3(-10.5f, 0.5f, -9.5f + 5 * j);  // 서쪽
                 }
                 else if (i == 2)
                 {
-                    g_pos[i][j] = new Vector3(-10.5f + 5 * j, 0.5f, 10.5f);   // 북쪽
+                    ghostPos[i][j] = new Vector3(-10.5f + 5 * j, 0.5f, 10.5f);   // 북쪽
                 }
                 else
                 {
-                    g_pos[i][j] = new Vector3(9.5f, 0.5f, 10.5f + (-5 * j));  // 동쪽
+                    ghostPos[i][j] = new Vector3(9.5f, 0.5f, 10.5f + (-5 * j));  // 동쪽
                 }
             }
         }
-        if (PhotonNetwork.IsMasterClient)
+       // if (PhotonNetwork.IsMasterClient)
         {
             spawnGhost();
         }
@@ -68,11 +67,12 @@ public class GhostSpawer : MonoBehaviourPun
     //    };
     private void spawnGhost()
     {
+        Debug.Log("들어오긴 하는거지..?");
             // 0 : Down, 1 : Left, 2 : Up, 3 : Right
             int randomDirection = Random.Range(0, 4);
-            foreach (Vector3 pos in g_pos[randomDirection])
+            foreach (Vector3 pos in ghostPos[randomDirection])
             {
-                GameObject newGhost = PhotonNetwork.Instantiate("ghost", pos, Quaternion.identity);
+                GameObject newGhost = PhotonNetwork.Instantiate("Ghost", pos, Quaternion.identity);
                 newGhost.transform.parent = transform;
                 newGhost.transform.rotation = Quaternion.Euler(0, 90 * randomDirection, 0);
                 StartCoroutine( DestroyAfter(newGhost, delay) );
