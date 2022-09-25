@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 enum Dir
 {
@@ -10,7 +11,7 @@ enum Dir
     North,
     Dir_Max
 }
-public class GhostSpawer : MonoBehaviour
+public class GhostSpawer : MonoBehaviourPun
 {
     [SerializeField]
     private GameObject ghost;
@@ -53,7 +54,10 @@ public class GhostSpawer : MonoBehaviour
                 }
             }
         }
-        spawnGhost();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            spawnGhost();
+        }
     }
 
     //private Vector3[/*여기에 랜덤 값이 들어가고 (*/][/*여기에 0~4 값이 들어가니까 이것만 인자로 받는 함수를 쓰면 간단해지겠죠*/] g_pos =
@@ -64,16 +68,21 @@ public class GhostSpawer : MonoBehaviour
     //    };
     private void spawnGhost()
     {
-        // 0 : Down, 1 : Left, 2 : Up, 3 : Right
-        int randomDirection = Random.Range(0, 4);
-        foreach (Vector3 pos in g_pos[randomDirection])
-        {         
-            GameObject newGhost = Instantiate(ghost, pos, Quaternion.identity, gameObject.transform);
-            newGhost.transform.rotation = Quaternion.Euler(0, 90 * randomDirection, 0);
-            Destroy(newGhost, delay);
-        }
-        
-        StartCoroutine(respawn());
+            // 0 : Down, 1 : Left, 2 : Up, 3 : Right
+            int randomDirection = Random.Range(0, 4);
+            foreach (Vector3 pos in g_pos[randomDirection])
+            {
+                GameObject newGhost = PhotonNetwork.Instantiate("ghost", pos, Quaternion.identity);
+                newGhost.transform.parent = transform;
+                newGhost.transform.rotation = Quaternion.Euler(0, 90 * randomDirection, 0);
+                StartCoroutine( DestroyAfter(newGhost, delay) );
+            }
+            StartCoroutine(respawn());
+    }
+    private IEnumerator DestroyAfter(GameObject newGhost, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PhotonNetwork.Destroy(newGhost);
     }
 
     private IEnumerator respawn()
@@ -85,7 +94,3 @@ public class GhostSpawer : MonoBehaviour
 
 // 리팩토링 할 때 대리자 이벤트
 // float 이중배열
-
-
-
-
