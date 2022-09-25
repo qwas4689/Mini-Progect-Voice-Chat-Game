@@ -6,7 +6,7 @@ using Photon.Pun;
 public class Enemy : MonoBehaviourPun
 {
     [SerializeField]
-    private Rigidbody rigidbody;
+    private Rigidbody _rigidbody;
     public int HP { get; private set; } = 100;
     void Start()
     {
@@ -23,6 +23,6 @@ public class Enemy : MonoBehaviourPun
     public virtual void OnDamage(int damage)
     {
         HP -= damage;
-        rigidbody.velocity += Vector3.up * 5;
+        _rigidbody.velocity += Vector3.up * 5;
     }
 }

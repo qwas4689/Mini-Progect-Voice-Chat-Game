@@ -6,24 +6,21 @@ using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
-    public TextMeshProUGUI _scoreUI;
+   
 
-    private Sensor sensor;
+    //private Sensor sensor;
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        sensor = GetComponent<Sensor>();
-        _scoreUI.text = $"0 / 3";
-    }
+    //// Start is called before the first frame update
+    //void Awake()
+    //{
+    //    sensor = GetComponent<Sensor>();
+        
+    //}
 
-    void Start()
-    {
-        sensor.upScoreEvent.AddListener(updateScoreUI);
-    }
+    //void Start()
+    //{
+    //    sensor.upScoreEvent.AddListener(updateScoreUI);
+    //}
 
-    public void updateScoreUI(float score)
-    {
-        _scoreUI.text = $"{score} / 3";
-    }
+    
 }

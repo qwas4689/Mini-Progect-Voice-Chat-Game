@@ -5,30 +5,43 @@ using UnityEngine.Events;
 
 public class PlayerFindMonster : MonoBehaviour
 {
-    public UnityEvent _playerFindMonster;
-
-    private void Awake()
-    {
-        _playerFindMonster = new UnityEvent();
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Monster")
         {
+            UIManager.Instance._playerFindMonster.Invoke();
+        }
+    }
 
-            Debug.Log("EnterMonster");
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Monster")
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                UIManager.Instance.CapturingSlider.value += Time.deltaTime * 0.33f;
+                if (UIManager.Instance.CapturingSlider.value == 1f)
+                {
+                    UIManager.Instance._upScore.Invoke();
+                    UIManager.Instance._playerMissingMonster.Invoke();
+                    UIManager.Instance.CapturingSlider.value = 0f;
+                    Destroy(other.gameObject);
+                }
+            }
+            else
+            {
+                UIManager.Instance.CapturingSlider.value = 0f;
+            }
 
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Monster")
         {
-
-            Debug.Log("ExitMonster");
+            UIManager.Instance._playerMissingMonster.Invoke();
 
         }
     }
