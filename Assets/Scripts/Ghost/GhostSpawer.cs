@@ -53,7 +53,7 @@ public class GhostSpawer : MonoBehaviourPun
                 }
             }
         }
-       // if (PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
             spawnGhost();
         }

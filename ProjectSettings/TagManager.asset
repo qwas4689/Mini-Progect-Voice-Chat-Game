@@ -8,6 +8,8 @@ TagManager:
   - Monster
   - MonsterSensor
   - Exit
+  - PlayerBody
+  - Ghost
   layers:
   - Default
   - TransparentFX

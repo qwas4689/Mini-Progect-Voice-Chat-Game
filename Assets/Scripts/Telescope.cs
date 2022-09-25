@@ -6,9 +6,14 @@ public class Telescope : MonoBehaviour
 {
     private Vector3 observerCameraPosition;
 
-    void Awake()
+    private void Awake()
     {
         observerCameraPosition = new Vector3(0f, 15f, 0f);
+    }
+
+    private void Start()
+    {
+
     }
 
     private void OnTriggerStay(Collider other)

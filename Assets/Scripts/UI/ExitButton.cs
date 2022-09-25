@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ExitButton : MonoBehaviour
 {
+    [SerializeField]
     private GameObject parent;
+
     void Start()
     {
-        parent = transform.parent.gameObject;
+       // parent = transform.parent.gameObject;
     }
 
     public void OnClickExitButton()

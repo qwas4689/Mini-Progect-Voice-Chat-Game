@@ -8,6 +8,7 @@ public class GameClear : MonoBehaviour
     public GameObject gameClearUI;
     public TextMeshProUGUI gameScore;
 
+
     private void Awake()
     {
         gameScore = GetComponent<TextMeshProUGUI>();
@@ -15,7 +16,7 @@ public class GameClear : MonoBehaviour
 
     private void Start()
     {
-
+       
     }
 
     private void Update()
@@ -25,12 +26,12 @@ public class GameClear : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Exit")
+        if (other.gameObject.tag == "PlayerBody")
         {
-            if (gameScore.text == "3 / 3")
+            if (UIManager.Instance.score >= 3)
             {
-                gameObject.SetActive(true);
-                Time.timeScale = 0f;
+                Debug.Log("¿€µø");
+                gameClearUI.SetActive(true);
             }
         }
     }
