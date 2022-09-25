@@ -32,9 +32,7 @@ public class PlayerFindMonster : MonoBehaviour
             {
                 UIManager.Instance.CapturingSlider.value = 0f;
             }
-
         }
-        
     }
 
     private void OnTriggerExit(Collider other)
@@ -42,7 +40,6 @@ public class PlayerFindMonster : MonoBehaviour
         if (other.gameObject.tag == "Monster")
         {
             UIManager.Instance._playerMissingMonster.Invoke();
-
         }
     }
 }

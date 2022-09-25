@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class asdasd : MonoBehaviour
+public class asdasd : MonoBehaviourPun
 {
 
     // Start is called before the first frame update

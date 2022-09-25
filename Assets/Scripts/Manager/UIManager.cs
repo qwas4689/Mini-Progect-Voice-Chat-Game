@@ -9,10 +9,13 @@ public class UIManager : SingletonBehaviour<UIManager>
 {
     public Slider CapturingSlider;
     public TextMeshProUGUI _scoreUI;
+    public GameObject ExitPorTal;
 
     public UnityEvent _playerFindMonster;
     public UnityEvent _playerMissingMonster;
     public UnityEvent _upScore;
+    
+
 
     private int score = 0;
 
@@ -22,6 +25,8 @@ public class UIManager : SingletonBehaviour<UIManager>
         _playerFindMonster = new UnityEvent();
         _playerMissingMonster = new UnityEvent();
         _upScore = new UnityEvent();
+
+        ExitPorTal.SetActive(false);
 
         _scoreUI.text = $"{score} / 3";
 
@@ -33,7 +38,6 @@ public class UIManager : SingletonBehaviour<UIManager>
         _playerFindMonster.AddListener(OnCapturingSlider);
         _playerMissingMonster.AddListener(OffCapturingSlider);
         _upScore.AddListener(AddScore);
-
     }
 
     // Update is called once per frame
@@ -56,5 +60,16 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         ++score;
         _scoreUI.text = $"{score} / 3";
+        Debug.Log("점수얻음");
+        if (score >= 3)
+        {
+            ExitPorTal.SetActive(true);
+            Debug.Log("점수 3점넘음");
+        }
+        else
+        {
+            ExitPorTal.SetActive(false);
+            Debug.Log("점수아직 3점안됨");
+        }
     }
 }

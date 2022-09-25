@@ -5,7 +5,6 @@ using UnityEngine;
 public class Telescope : MonoBehaviour
 {
     private Vector3 observerCameraPosition;
-    public GameObject exitZone;
 
     void Awake()
     {
@@ -20,7 +19,6 @@ public class Telescope : MonoBehaviour
             {
                 other.gameObject.transform.GetChild(0).position = observerCameraPosition;
                 other.gameObject.GetComponent<PlayerMove>().enabled = false;
-                exitZone.SetActive(true);
                 Destroy(gameObject);
             }
         }

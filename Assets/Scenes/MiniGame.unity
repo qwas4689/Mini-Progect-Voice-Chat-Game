@@ -1551,7 +1551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2092f9963632848b9fa935f6b48131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 1169125116386548446, guid: bd03fe5a6728e014e82907ade031998c, type: 3}
 --- !u!4 &1074035653
 Transform:
   m_ObjectHideFlags: 0
@@ -2139,7 +2138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1319695143
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2173,7 +2172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 60905a4f4ef174341bce104717430672, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2230,7 +2229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e4deddaf6e5c84583704bcd3949cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitZone: {fileID: 1775890041}
 --- !u!135 &1319695148
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2528,6 +2526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CapturingSlider: {fileID: 1581059120}
   _scoreUI: {fileID: 978367931}
+  ExitPorTal: {fileID: 1775890041}
   _playerFindMonster:
     m_PersistentCalls:
       m_Calls: []
@@ -2940,7 +2939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1775890042
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2981,8 +2980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4a35160b894e44cbeb3eb199f25d49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameClearUI: {fileID: 0}
-  gameScore: {fileID: 978367931}
 --- !u!1 &1938373626
 GameObject:
   m_ObjectHideFlags: 0
