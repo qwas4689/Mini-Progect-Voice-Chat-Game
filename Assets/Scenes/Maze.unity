@@ -475,7 +475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 209672998}
-  - component: {fileID: 209672999}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -508,21 +507,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &209672999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209672997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 863f98f82667cca419327b7d8392bc98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuUI: {fileID: 43936413}
-  manualUI: {fileID: 412971642}
-  exitButton: {fileID: 1601762294}
 --- !u!1 &234527100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1287,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &412971643
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4067,7 +4051,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1601762299}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
         m_MethodName: OnClickExitButton
         m_Mode: 1
         m_Arguments:
@@ -4125,12 +4109,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1601762294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 863f98f82667cca419327b7d8392bc98, type: 3}
+  m_Script: {fileID: 11500000, guid: 37353f8674bdaff48a0e19de339b7a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuUI: {fileID: 0}
-  manualUI: {fileID: 412971642}
-  exitButton: {fileID: 1601762294}
 --- !u!1 &1619131236
 GameObject:
   m_ObjectHideFlags: 0
@@ -4281,13 +4262,14 @@ GameObject:
   - component: {fileID: 1701879510}
   - component: {fileID: 1701879509}
   - component: {fileID: 1701879508}
+  - component: {fileID: 1701879511}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1701879507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4353,9 +4335,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1701879506}
+      - m_Target: {fileID: 1701879511}
         m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: OnClickMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4403,6 +4385,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701879506}
   m_CullTransparentMesh: 1
+--- !u!114 &1701879511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701879506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a651e76a17b272d4baac61e445ba9581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuUI: {fileID: 43936413}
 --- !u!1 &1742324004
 GameObject:
   m_ObjectHideFlags: 0
