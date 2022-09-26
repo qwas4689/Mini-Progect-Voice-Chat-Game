@@ -37,19 +37,19 @@ public class GhostSpawer : MonoBehaviourPun
             {
                 if (i == 0)
                 {
-                    ghostPos[i][j] = new Vector3(9.5f - 5 * j, 0.5f, -9.5f);   // 巢率
+                    ghostPos[i][j] = new Vector3(10.5f - 5 * j, 0.5f, -10.5f);   // 巢率
                 }
                 else if (i == 1)
                 {
-                    ghostPos[i][j] = new Vector3(-10.5f, 0.5f, -9.5f + 5 * j);  // 辑率
+                    ghostPos[i][j] = new Vector3(-10.5f, 0.5f, -10.5f + 5 * j);  // 辑率
                 }
                 else if (i == 2)
                 {
-                    ghostPos[i][j] = new Vector3(-10.5f + 5 * j, 0.5f, 10.5f);   // 合率
+                    ghostPos[i][j] = new Vector3(-9.5f + 5 * j, 0.5f, 10.5f);   // 合率
                 }
                 else
                 {
-                    ghostPos[i][j] = new Vector3(9.5f, 0.5f, 10.5f + (-5 * j));  // 悼率
+                    ghostPos[i][j] = new Vector3(10.5f, 0.5f, 9.5f + (-5 * j));  // 悼率
                 }
             }
         }
