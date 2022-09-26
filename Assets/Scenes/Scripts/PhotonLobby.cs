@@ -3,16 +3,27 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class PhotonLobby : MonoBehaviourPunCallbacks
 {
-    private void Start()
+    [SerializeField]
+    private TMP_InputField _nickname;
+
+    [SerializeField]
+    private Button _gameStartButton;
+
+    private void Awake()
     {
         Debug.Log("Start");
         // 접속에 필요한 정보(게임 버전) 설정
         PhotonNetwork.GameVersion = "1.0";
+
+        _gameStartButton.onClick.AddListener(ClickLoginButton);
+
         // 설정한 정보로 마스터 서버 접속 시도
-        PhotonNetwork.ConnectUsingSettings();
+        // PhotonNetwork.ConnectUsingSettings();
     }
 
     // 마스터 서버 접속 성공 시 자동 실행
@@ -65,7 +76,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("OnJoinRandomFailed");
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 4 });
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
     }
 
     // 룸에 참가 완료된 경우 자동 실행
@@ -74,6 +85,28 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         Debug.Log("OnJoinRoom");
         PhotonNetwork.LoadLevel("MiniGame");
     }
+
+    private static readonly RoomOptions RandomRoomOptions = new RoomOptions()
+    {
+        MaxPlayers = 20
+    };
+
+    public void ClickLoginButton()
+    {
+        if (_nickname.text.Length == 0)
+        {
+            return;
+        }
+        else if (_nickname.text.Length != 0)
+        {
+            Data data = FindObjectOfType<Data>();
+            data.Nickname = _nickname.text;
+            Debug.Log($"입력된 닉네임 : {data.Nickname}");
+            PhotonNetwork.ConnectUsingSettings();
+            //PhotonNetwork.JoinOrCreateRoom("Metaverse", RandomRoomOptions, TypedLobby.Default);
+        }
+    }
+
 
     //public override void OnCreatedRoom()
     //{

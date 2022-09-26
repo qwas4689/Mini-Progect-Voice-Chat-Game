@@ -6,7 +6,8 @@ using Photon.Pun;
 
 public class PlayerFindMonster : MonoBehaviour
 {
-    public AudioSource captureMonster;
+    [SerializeField]
+    private AudioSource captureMonster;
 
     private void Start()
     {

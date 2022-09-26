@@ -7,8 +7,12 @@ public class MenuButton : MonoBehaviour
     [SerializeField]
     private GameObject menuUI;
 
+    [SerializeField]
+    private AudioSource exitButtonSound;
+
     public void OnClickMenuButton()
     {
+        exitButtonSound.Play();
         menuUI.SetActive(true);
     }
 }

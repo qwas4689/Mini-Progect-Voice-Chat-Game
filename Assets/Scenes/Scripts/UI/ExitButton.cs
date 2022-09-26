@@ -7,13 +7,17 @@ public class ExitButton : MonoBehaviour
     [SerializeField]
     private GameObject parent;
 
+    [SerializeField]
+    private AudioSource exitButtonSound;
+
     void Start()
     {
-       // parent = transform.parent.gameObject;
+
     }
 
     public void OnClickExitButton()
     {
+        exitButtonSound.Play();
         parent.SetActive(false);
     }
 

@@ -17,8 +17,10 @@ public class GhostSpawer : MonoBehaviourPun
     private GameObject ghost;
     public float delay;
     public float mapSize;
-
     public int randNum;
+
+    [SerializeField]
+    private AudioSource spawnGhostSound;
 
     private Vector3[][] ghostPos;
      
@@ -67,7 +69,9 @@ public class GhostSpawer : MonoBehaviourPun
     //    };
     private void spawnGhost()
     {
+
         Debug.Log("들어오긴 하는거지..?");
+        spawnGhostSound.Play();
             // 0 : Down, 1 : Left, 2 : Up, 3 : Right
             int randomDirection = Random.Range(0, 4);
             foreach (Vector3 pos in ghostPos[randomDirection])

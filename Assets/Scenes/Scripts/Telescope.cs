@@ -22,7 +22,7 @@ public class Telescope : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                other.gameObject.transform.GetChild(1).position = observerCameraPosition;
+                other.gameObject.transform.GetChild(2).position = observerCameraPosition;
                 other.gameObject.GetComponent<PlayerMove>().enabled = false;
                 Destroy(gameObject);
             }

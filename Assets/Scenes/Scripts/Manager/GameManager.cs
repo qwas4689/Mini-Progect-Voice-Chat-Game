@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonBehaviourNickname<GameManager>
 {
     public static bool canPlayerMove = false; 
     public static bool isOpenUI = true;  
