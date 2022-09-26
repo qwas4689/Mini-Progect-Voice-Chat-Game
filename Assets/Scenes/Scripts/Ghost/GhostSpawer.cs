@@ -70,19 +70,24 @@ public class GhostSpawer : MonoBehaviourPun
     private void spawnGhost()
     {
 
+<<<<<<< Updated upstream:Assets/Scenes/Scripts/Ghost/GhostSpawer.cs
         Debug.Log("들어오긴 하는거지..?");
         spawnGhostSound.Play();
+=======
+>>>>>>> Stashed changes:Assets/Scripts/Ghost/GhostSpawer.cs
             // 0 : Down, 1 : Left, 2 : Up, 3 : Right
             int randomDirection = Random.Range(0, 4);
             foreach (Vector3 pos in ghostPos[randomDirection])
             {
-                GameObject newGhost = PhotonNetwork.Instantiate("Ghost", pos, Quaternion.identity,0);
-               // newGhost.transform.parent = transform;
+                GameObject newGhost = PhotonNetwork.Instantiate("Ghost", pos, Quaternion.identity, 0);
+                // newGhost.transform.parent = transform;
                 newGhost.transform.rotation = Quaternion.Euler(0, 90 * randomDirection, 0);
-                StartCoroutine( DestroyAfter(newGhost, delay) );
+                StartCoroutine(DestroyAfter(newGhost, delay));
             }
             StartCoroutine(respawn());
+
     }
+
     private IEnumerator DestroyAfter(GameObject newGhost, float delay)
     {
         yield return new WaitForSeconds(delay);

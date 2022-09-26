@@ -83,7 +83,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("OnJoinRoom");
-        PhotonNetwork.LoadLevel("MiniGame");
+        PhotonNetwork.LoadLevel("MiniGameTest");
     }
 
     private static readonly RoomOptions RandomRoomOptions = new RoomOptions()

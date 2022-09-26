@@ -28,10 +28,10 @@ public class GameClear : MonoBehaviour
     {
         if (other.gameObject.tag == "PlayerBody")
         {
-            if (UIManager.Instance.score >= 3)
+            if (GameManager.Instance.captureScore >= 3)
             {
                 Debug.Log("¿€µø");
-                gameClearUI.SetActive(true);
+                GameManager.Instance.GameClear();
             }
         }
     }

@@ -40,6 +40,7 @@ MonoBehaviour:
   - Fire
   - OnDamage
   - RespawnSpaceship
+<<<<<<< Updated upstream
   - AddScore
   - Awake
   - OffCapturingSlider
@@ -51,6 +52,13 @@ MonoBehaviour:
   - Start
   - setScoreUI
   - SetNickname
+=======
+  - flowingTime
+  - SetActiveGameClearUI
+  - SetActiveGameOverUI
+  - UpdateCaptureScoreText
+  - UpdateTimerText
+>>>>>>> Stashed changes
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
