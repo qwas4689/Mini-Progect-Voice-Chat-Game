@@ -16,4 +16,9 @@ public class ExitButton : MonoBehaviour
     {
         parent.SetActive(false);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

@@ -10,7 +10,6 @@ public class UIManager : SingletonBehaviour<UIManager>
     public Slider CapturingSlider;
     public TextMeshProUGUI _scoreUI;
     public GameObject ExitPorTal;
-    public GameObject ManualUI;
 
     public UnityEvent _playerFindMonster;
     public UnityEvent _playerMissingMonster;

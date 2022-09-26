@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class RemainingTimeText : MonoBehaviour
 {
     public TextMeshProUGUI _timerUI;
+    public GameObject GameOverUI;
 
     private int minute;
     private int second;
@@ -44,6 +45,7 @@ public class RemainingTimeText : MonoBehaviour
 
             if (second == 0 && minute == 0)
             {
+                GameOverUI.SetActive(true);
                 Time.timeScale = 0;
             }
         }
