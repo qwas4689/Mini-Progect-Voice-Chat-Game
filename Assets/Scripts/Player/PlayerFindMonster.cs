@@ -11,6 +11,7 @@ public class PlayerFindMonster : MonoBehaviour
         {
             UIManager.Instance._playerFindMonster.Invoke();
         }
+        
 
         
     }
