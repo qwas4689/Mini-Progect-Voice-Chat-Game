@@ -8,9 +8,11 @@ using Photon.Pun;
 
 public class UIManager : SingletonBehaviour<UIManager>
 {
-    public Slider CapturingSlider;
+    public GameObject CapturingSlider;
     public TextMeshProUGUI _scoreUI;
     public GameObject ExitPorTal;
+    public GameObject gameOverUI;
+    public GameObject gameClearUI;
 
     public UnityEvent _playerFindMonster;
     public UnityEvent _playerMissingMonster;
@@ -21,7 +23,7 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     private void Awake()
     {
-        CapturingSlider.gameObject.SetActive(false);
+        //CapturingSlider.gameObject.SetActive(false);
         _playerFindMonster = new UnityEvent();
         _playerMissingMonster = new UnityEvent();
         _upScore = new UnityEvent();
@@ -35,27 +37,51 @@ public class UIManager : SingletonBehaviour<UIManager>
 
     void Start()
     {
-        _playerFindMonster.AddListener(OnCapturingSlider);
-        _playerMissingMonster.AddListener(OffCapturingSlider);
+        //_playerFindMonster.AddListener(OnCapturingSlider);
+        //_playerMissingMonster.AddListener(OffCapturingSlider);
         _upScore.AddListener(AddScore);
         _hitGhost.AddListener(resetScoreAndCapturingSlider);
     }
 
-    private void OnCapturingSlider()
-    {
-        CapturingSlider.gameObject.SetActive(true);
-    }
+    //public void OnCapturingSlider()
+    //{
+    //    Debug.Log("슬라이더 들어옴");
+    //    CapturingSlider.SetActive(true);
+    //}
 
-    private void OffCapturingSlider()
-    {
-        CapturingSlider.gameObject.SetActive(false);
-    }
+    //public void OffCapturingSlider()
+    //{
+    //    CapturingSlider.SetActive(false);
+    //}
 
     public void AddScore()
     {
         ++score;
         _scoreUI.text = $"{score} / 3";
-        if (score >= 3)
+        photonView.RPC("UpdateCaptureScoreText", RpcTarget.All, score);
+    }
+
+    public void resetScoreAndCapturingSlider()
+    {
+        score = 0;
+        _scoreUI.text = $"{score} / 3";
+        //CapturingSlider.GetComponent<Slider>().value = 0f;
+    }
+
+    public virtual void setScoreUI()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            _scoreUI.text = $"{score} / 3";
+        }
+    }
+
+    [PunRPC]
+    public void UpdateCaptureScoreText(int newScore)
+    {
+        _scoreUI.text = $"{newScore} / 3";
+
+        if (newScore >= 3)
         {
             ExitPorTal.SetActive(true);
         }
@@ -65,18 +91,15 @@ public class UIManager : SingletonBehaviour<UIManager>
         }
     }
 
-    public void resetScoreAndCapturingSlider()
+    [PunRPC]
+    public void SetActiveGameClearUI(bool active)
     {
-        score = 0;
-        _scoreUI.text = $"{score} / 3";
-        CapturingSlider.value = 0f;
+        gameClearUI.SetActive(active);
     }
 
-    public virtual void setScoreUI()
+    [PunRPC]
+    public void SetActiveGameOverUI(bool active)
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            _scoreUI.text = $"{score} / 3";
-        }
+        gameOverUI.SetActive(active);
     }
 }

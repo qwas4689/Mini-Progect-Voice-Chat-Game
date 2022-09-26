@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 // template <typename T>
-public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
+public class SingletonBehaviour<T> : MonoBehaviourPun where T : MonoBehaviourPun
     // where 는 T에 대한 컴포넌트 제약을 걸어주는것 제네릭에 사용하는것이다.
     // MonoBehaviour를 상속받는 것이여야만 한다.
 {

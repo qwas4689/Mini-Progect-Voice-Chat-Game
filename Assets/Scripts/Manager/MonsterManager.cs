@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class MonsterManager : MonoBehaviour
+
+public class MonsterManager : MonoBehaviourPun
 {
     [SerializeField]
     private GameObject monsterPrefab = null;
@@ -15,7 +18,10 @@ public class MonsterManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(createMonster());
+        if(PhotonNetwork.IsMasterClient)
+        {
+            StartCoroutine(createMonster());
+        }
     }
 
     private IEnumerator createMonster()
@@ -23,7 +29,7 @@ public class MonsterManager : MonoBehaviour
         Debug.Assert(monsterPrefab != null);
         while (true)
         {
-            Instantiate(monsterPrefab, monsterSpwanePosition[index].position, Quaternion.identity);
+            PhotonNetwork.Instantiate("Monster", monsterSpwanePosition[index].position, Quaternion.identity);
             yield return new WaitForSeconds(15f);
             randomIndex();
         }
