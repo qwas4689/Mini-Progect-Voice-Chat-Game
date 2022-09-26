@@ -52,12 +52,10 @@ public class PlayerMove : MonoBehaviourPun
     {
         if (moveDir.x != 0 || moveDir.z != 0)
         {
-            Debug.Log("소리가 나와야 할 터인데..");
             playerWalkSound.UnPause();
         }
         else
         {
-            Debug.Log("소리가 안나오고 있을 터인데..");
             playerWalkSound.Pause();
         }
     }
