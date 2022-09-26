@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
 public class PlayerFindMonster : MonoBehaviour
 {
+    [PunRPC]
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Monster")
         {
             UIManager.Instance._playerFindMonster.Invoke();
         }
-        
-
-        
     }
 
+    [PunRPC]
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Monster")
@@ -38,6 +38,7 @@ public class PlayerFindMonster : MonoBehaviour
         }
     }
 
+    [PunRPC] 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Monster")
