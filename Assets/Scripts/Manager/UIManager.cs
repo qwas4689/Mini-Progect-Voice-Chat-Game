@@ -26,6 +26,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         _playerFindMonster = new UnityEvent();
         _playerMissingMonster = new UnityEvent();
         _upScore = new UnityEvent();
+        _hitGhost = new UnityEvent();
 
         ExitPorTal.SetActive(false);
 
@@ -39,7 +40,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         _playerFindMonster.AddListener(OnCapturingSlider);
         _playerMissingMonster.AddListener(OffCapturingSlider);
         _upScore.AddListener(AddScore);
-        _hitGhost.AddListener(resetScore);
+        _hitGhost.AddListener(resetScoreAndCapturingSlider);
     }
 
     // Update is called once per frame
@@ -74,9 +75,10 @@ public class UIManager : SingletonBehaviour<UIManager>
             Debug.Log("점수아직 3점안됨");
         }
     }
-    public void resetScore()
+    public void resetScoreAndCapturingSlider()
     {
         score = 0;
         _scoreUI.text = $"{score} / 3";
+        CapturingSlider.value = 0f;
     }
 }
