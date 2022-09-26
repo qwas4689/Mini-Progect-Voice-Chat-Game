@@ -16,7 +16,7 @@ MonoBehaviour:
     AppIdRealtime: a74b6c59-d748-41e6-84e3-11da694cc0b2
     AppIdFusion: 
     AppIdChat: 
-    AppIdVoice: 3e06570f-cc17-47ca-bda3-78901a695ed9
+    AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
@@ -28,7 +28,7 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: kr
+  DevRegion: 
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
@@ -38,27 +38,8 @@ MonoBehaviour:
   - DestroyRpc
   - DestroySpaceship
   - Fire
-  - OnDamage
   - RespawnSpaceship
-<<<<<<< Updated upstream
-  - AddScore
-  - Awake
-  - OffCapturingSlider
-  - OnCapturingSlider
-  - OnTriggerEnter
-  - OnTriggerExit
-  - OnTriggerStay
-  - resetScoreAndCapturingSlider
-  - Start
-  - setScoreUI
   - SetNickname
-=======
-  - flowingTime
-  - SetActiveGameClearUI
-  - SetActiveGameOverUI
-  - UpdateCaptureScoreText
-  - UpdateTimerText
->>>>>>> Stashed changes
   DisableAutoOpenWizard: 1
   ShowSettings: 1
-  DevRegionSetOnce: 1
+  DevRegionSetOnce: 0
