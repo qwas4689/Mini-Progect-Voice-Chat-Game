@@ -12,6 +12,12 @@ public class PlayerMove : MonoBehaviourPun
     private float moveSpeed = 3.0f;
     // public int HP { get; private set; } = 100;
 
+    private void Awake()
+    {
+        Camera.main.transform.parent = transform;
+        Camera.main.transform.localPosition = new Vector3(0f, 5f, 0f);
+    }
+
     public void Update()
     {
         if (false == photonView.IsMine)
@@ -21,7 +27,7 @@ public class PlayerMove : MonoBehaviourPun
         moveDir.x = Input.GetAxis("Horizontal");
         moveDir.z = Input.GetAxis("Vertical");
 
-        gameObject.transform.GetChild(1).LookAt(transform.position + moveDir.normalized);
+        gameObject.transform.GetChild(0).LookAt(transform.position + moveDir.normalized);
     }
 
     public void FixedUpdate()
