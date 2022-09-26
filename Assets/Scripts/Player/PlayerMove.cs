@@ -14,8 +14,11 @@ public class PlayerMove : MonoBehaviourPun
 
     private void Awake()
     {
-        Camera.main.transform.parent = transform;
-        Camera.main.transform.localPosition = new Vector3(0f, 5f, 0f);
+        if (photonView.IsMine)
+        {
+            Camera.main.transform.parent = transform;
+            Camera.main.transform.localPosition = new Vector3(0f, 5f, 0f);
+        }
     }
 
     public void Update()
@@ -39,10 +42,10 @@ public class PlayerMove : MonoBehaviourPun
         _rigidbody.MovePosition(transform.position + moveDir * (moveSpeed * Time.fixedDeltaTime));
     }
 
-    
-        // 여기서 검사를 하고, OnDamage를 여기에서 호출
-        // 충돌을 했는지 안했는지를 여기에서 검사
-        // 왜? 여기는 호스트만 검사하고, 우리의 정책은 호스트가 충돌 검사를 판정하는걸로 정했으니까!
-        // 검사가 끝나고 충돌을 한 애들의 결과는 여기에서 뿌려줘야 한다.
- 
+
+    // 여기서 검사를 하고, OnDamage를 여기에서 호출
+    // 충돌을 했는지 안했는지를 여기에서 검사
+    // 왜? 여기는 호스트만 검사하고, 우리의 정책은 호스트가 충돌 검사를 판정하는걸로 정했으니까!
+    // 검사가 끝나고 충돌을 한 애들의 결과는 여기에서 뿌려줘야 한다.
+
 }
