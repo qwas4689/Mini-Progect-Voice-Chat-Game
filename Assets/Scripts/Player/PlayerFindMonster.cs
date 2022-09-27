@@ -61,7 +61,7 @@ public class PlayerFindMonster : MonoBehaviourPun
                     playerCapturingSlider.value = 0f;
 
 
-                    other.gameObject.GetComponent<Monster>().photonView.RPC("MonsterDestory", RpcTarget.All);             
+                    other.gameObject.GetComponent<PhotonView>().RPC("MonsterDestory", RpcTarget.All);             
                     UIManager.Instance.photonView.RPC("AddScore", RpcTarget.MasterClient);
 
                     UIManager.Instance._playerMissingMonster.Invoke();
