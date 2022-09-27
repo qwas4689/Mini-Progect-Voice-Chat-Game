@@ -30,8 +30,8 @@ public class RemainingTimeText : MonoBehaviourPun, IPunObservable
 
     private void Awake()
     {
-        second = 30;
-        minute = 0;
+        second = 0;
+        minute = 2;
     }
 
 
