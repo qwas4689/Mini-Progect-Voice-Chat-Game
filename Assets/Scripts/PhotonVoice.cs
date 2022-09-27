@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Voice;
+using Photon.Voice.Unity;
 
 public class PhotonVoice : MonoBehaviour
 {
-    private PhotonVoice photonVoice;
+    [SerializeField]
+    private Recorder photonVoice;
     void Start()
     {
-        photonVoice = GetComponent<PhotonVoice>();
+        photonVoice.TransmitEnabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.K))
+        if(Input.GetKeyDown(KeyCode.K))
         {
-            
+            photonVoice.TransmitEnabled = true;
+        }
+        if(Input.GetKeyUp(KeyCode.K))   
+        {
+            photonVoice.TransmitEnabled = false;
         }
         
     }
