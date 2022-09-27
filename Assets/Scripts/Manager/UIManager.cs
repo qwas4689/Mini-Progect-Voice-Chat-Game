@@ -43,22 +43,19 @@ public class UIManager : SingletonBehaviour<UIManager>
         _hitGhost.AddListener(resetScoreAndCapturingSlider);
     }
 
-    //public void OnCapturingSlider()
-    //{
-    //    Debug.Log("슬라이더 들어옴");
-    //    CapturingSlider.SetActive(true);
-    //}
-
-    //public void OffCapturingSlider()
-    //{
-    //    CapturingSlider.SetActive(false);
-    //}
-
     public void AddScore()
     {
         ++score;
-        _scoreUI.text = $"{score} / 3";
         photonView.RPC("UpdateCaptureScoreText", RpcTarget.All, score);
+
+        if (score >= 3)
+        {
+            ExitPorTal.SetActive(true);
+        }
+        else
+        {
+            ExitPorTal.SetActive(false);
+        }
     }
 
     public void resetScoreAndCapturingSlider()
@@ -80,15 +77,6 @@ public class UIManager : SingletonBehaviour<UIManager>
     public void UpdateCaptureScoreText(int newScore)
     {
         _scoreUI.text = $"{newScore} / 3";
-
-        if (newScore >= 3)
-        {
-            ExitPorTal.SetActive(true);
-        }
-        else
-        {
-            ExitPorTal.SetActive(false);
-        }
     }
 
     [PunRPC]

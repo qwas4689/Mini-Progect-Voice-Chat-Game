@@ -62,9 +62,9 @@ public class RemainingTimeText : MonoBehaviourPun, IPunObservable
                 cumulativeTime = 0f;
             }
 
-            if (second == 0 && minute == 0)
+            if (minute < 0)
             {
-                GameManager.Instance.GameOver();
+                GameManager.Instance.photonView.RPC("GameOver", RpcTarget.All);
                 Time.timeScale = 0;
             }
 

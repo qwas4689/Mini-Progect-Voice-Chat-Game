@@ -44,22 +44,14 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    public void AddScore(int newScore)
-    {
-        if (!IsGameover)
-        {
-            captureScore += newScore;
-            UIManager.Instance.UpdateCaptureScoreText(captureScore);
-        }
-    }
-
-
+    [PunRPC]
     public void GameOver()
     {
         IsGameover = true;
         UIManager.Instance.SetActiveGameOverUI(true);
     }
 
+    [PunRPC]
     public void GameClear()
     {
         UIManager.Instance.SetActiveGameClearUI(true);
