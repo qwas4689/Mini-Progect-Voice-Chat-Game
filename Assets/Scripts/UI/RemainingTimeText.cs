@@ -64,6 +64,8 @@ public class RemainingTimeText : MonoBehaviourPun, IPunObservable
 
             if (minute < 0)
             {
+                minute = 0;
+                second = 0;
                 GameManager.Instance.photonView.RPC("GameOver", RpcTarget.All);
                 Time.timeScale = 0;
             }

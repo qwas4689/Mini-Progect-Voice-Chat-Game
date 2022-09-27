@@ -43,6 +43,7 @@ public class UIManager : SingletonBehaviour<UIManager>
         _hitGhost.AddListener(resetScoreAndCapturingSlider);
     }
 
+    [PunRPC]
     public void AddScore()
     {
         ++score;
