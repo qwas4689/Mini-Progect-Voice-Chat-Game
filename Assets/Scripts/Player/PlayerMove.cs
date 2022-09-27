@@ -37,6 +37,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks
         _nicknameText = GetComponentInChildren<TextMeshProUGUI>();
         if (photonView.IsMine)
         {
+            _rigidbody = GetComponentInChildren<Rigidbody>();
             Camera.main.transform.parent = transform;
             Camera.main.transform.localPosition = new Vector3(0f, 5f, 0f);
 
