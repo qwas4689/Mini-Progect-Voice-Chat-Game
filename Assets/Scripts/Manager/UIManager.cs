@@ -8,7 +8,7 @@ using Photon.Pun;
 
 public class UIManager : SingletonBehaviour<UIManager>
 {
-    public GameObject CapturingSlider;
+    //public GameObject CapturingSlider;
     public TextMeshProUGUI _scoreUI;
     public GameObject ExitPorTal;
     public GameObject gameOverUI;

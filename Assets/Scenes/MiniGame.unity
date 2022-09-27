@@ -809,6 +809,8 @@ GameObject:
   - component: {fileID: 163126631}
   - component: {fileID: 163126630}
   - component: {fileID: 163126629}
+  - component: {fileID: 163126632}
+  - component: {fileID: 163126633}
   m_Layer: 5
   m_Name: RemainingTimeText
   m_TagString: Untagged
@@ -933,6 +935,42 @@ RectTransform:
   m_AnchoredPosition: {x: 60, y: -60}
   m_SizeDelta: {x: 340, y: 120}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &163126632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163126628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 163126633}
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &163126633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163126628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aced5b8e4de57d14e85a0dbf2d476c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timerUI: {fileID: 163126629}
 --- !u!1 &174161569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +2464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 860144113}
   - component: {fileID: 860144112}
+  - component: {fileID: 860144114}
   m_Layer: 0
   m_Name: GhostSpawner
   m_TagString: Untagged
@@ -2465,6 +2504,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860144114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860144111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &915671479
 GameObject:
   m_ObjectHideFlags: 0
@@ -4409,7 +4470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0fecd9a5117dd4bb8577cf9bb9b3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CapturingSlider: {fileID: 0}
   _scoreUI: {fileID: 978367931}
   ExitPorTal: {fileID: 1775890041}
   gameOverUI: {fileID: 1230836131}
@@ -5390,7 +5450,6 @@ GameObject:
   - component: {fileID: 1950327405}
   - component: {fileID: 1950327404}
   - component: {fileID: 1950327403}
-  - component: {fileID: 1950327407}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5486,19 +5545,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1950327407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950327402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aced5b8e4de57d14e85a0dbf2d476c98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timerUI: {fileID: 163126629}
 --- !u!1 &1954161557
 GameObject:
   m_ObjectHideFlags: 0

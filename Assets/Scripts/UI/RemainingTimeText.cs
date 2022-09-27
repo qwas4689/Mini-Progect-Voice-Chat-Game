@@ -38,7 +38,7 @@ public class RemainingTimeText : MonoBehaviourPun, IPunObservable
     private void Update()
     {
         flowingTime();
-        //photonView.RPC("UpdateTimerText", RpcTarget.All, minute, second);
+        photonView.RPC("UpdateTimerText", RpcTarget.All, minute, second);
     }
 
     private void flowingTime()
