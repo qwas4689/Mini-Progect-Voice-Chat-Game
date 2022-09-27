@@ -15,10 +15,11 @@ public class MonsterManager : MonoBehaviourPun
 
     private int index;
     private int totalMonstersNumber = 8;
+    private float waitForTime = 15f;
 
     private void Start()
     {
-        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
         {
             StartCoroutine(createMonster());
         }
@@ -30,7 +31,7 @@ public class MonsterManager : MonoBehaviourPun
         while (true)
         {
             PhotonNetwork.Instantiate("Monster", monsterSpwanePosition[index].position, Quaternion.identity);
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(waitForTime);
             randomIndex();
         }
     }

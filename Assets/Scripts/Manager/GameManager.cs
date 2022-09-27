@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     private static GameManager m_instance;
 
     public int captureScore = 0;
-    public bool IsGameover { get; private set; }
 
 
 
@@ -47,7 +46,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void GameOver()
     {
-        IsGameover = true;
         UIManager.Instance.SetActiveGameOverUI(true);
     }
 
@@ -55,5 +53,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     public void GameClear()
     {
         UIManager.Instance.SetActiveGameClearUI(true);
+        Time.timeScale = 0f;
     }
 }

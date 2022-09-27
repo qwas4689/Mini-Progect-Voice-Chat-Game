@@ -6,10 +6,27 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 
-public class UIManager : SingletonBehaviour<UIManager>
+public class UIManager : MonoBehaviourPun
 {
     //public GameObject CapturingSlider;
-    public TextMeshProUGUI _scoreUI;
+    public TextMeshProUGUI _scoreUI { get; set; }
+
+    private static UIManager _instance;
+
+    public static UIManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<UIManager>();
+            }
+
+            return _instance;
+        }
+    }
+
+
     public GameObject ExitPorTal;
     public GameObject gameOverUI;
     public GameObject gameClearUI;
@@ -19,7 +36,7 @@ public class UIManager : SingletonBehaviour<UIManager>
     public UnityEvent _upScore;
     public UnityEvent _hitGhost;
 
-    public int score = 0;
+    public int score;
 
     private void Awake()
     {
@@ -29,23 +46,27 @@ public class UIManager : SingletonBehaviour<UIManager>
         _upScore = new UnityEvent();
         _hitGhost = new UnityEvent();
 
+
         ExitPorTal.SetActive(false);
 
-        setScoreUI();
 
+        setScoreUI();
     }
 
     void Start()
     {
+        score = 0;
         //_playerFindMonster.AddListener(OnCapturingSlider);
         //_playerMissingMonster.AddListener(OffCapturingSlider);
         _upScore.AddListener(AddScore);
         _hitGhost.AddListener(resetScoreAndCapturingSlider);
     }
 
+    [PunRPC]
     public void AddScore()
     {
         ++score;
+        Debug.Log("점수얻음");
         photonView.RPC("UpdateCaptureScoreText", RpcTarget.All, score);
 
         if (score >= 3)
@@ -62,7 +83,6 @@ public class UIManager : SingletonBehaviour<UIManager>
     {
         score = 0;
         _scoreUI.text = $"{score} / 3";
-        //CapturingSlider.GetComponent<Slider>().value = 0f;
     }
 
     public virtual void setScoreUI()
@@ -89,5 +109,10 @@ public class UIManager : SingletonBehaviour<UIManager>
     public void SetActiveGameOverUI(bool active)
     {
         gameOverUI.SetActive(active);
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("OnDisable");        
     }
 }
