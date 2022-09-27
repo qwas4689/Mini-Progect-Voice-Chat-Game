@@ -2463,6 +2463,11 @@ GameObject:
   m_Component:
   - component: {fileID: 860144113}
   - component: {fileID: 860144112}
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 860144114}
+  - component: {fileID: 860144115}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: GhostSpawner
   m_TagString: Untagged
@@ -2502,6 +2507,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!114 &860144114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860144111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 860144115}
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &860144115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860144111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+>>>>>>> Stashed changes
 --- !u!1 &915671479
 GameObject:
   m_ObjectHideFlags: 0
@@ -4409,6 +4456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1487436932}
   - component: {fileID: 1487436931}
+  - component: {fileID: 1487436933}
   m_Layer: 0
   m_Name: PlayerSpawner
   m_TagString: Untagged
@@ -4443,6 +4491,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1487436933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487436930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85c538f4aa6a2242b20be9dec7ab980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1505807404
 GameObject:
   m_ObjectHideFlags: 0

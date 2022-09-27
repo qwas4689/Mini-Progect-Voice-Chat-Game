@@ -76,9 +76,8 @@ public class GhostSpawer : MonoBehaviourPun
             int randomDirection = Random.Range(0, 4);
             foreach (Vector3 pos in ghostPos[randomDirection])
             {
-                GameObject newGhost = PhotonNetwork.Instantiate("Ghost", pos, Quaternion.identity,0);
+                GameObject newGhost = PhotonNetwork.Instantiate("Ghost", pos, Quaternion.Euler(0, 90 * randomDirection, 0));
                // newGhost.transform.parent = transform;
-                newGhost.transform.rotation = Quaternion.Euler(0, 90 * randomDirection, 0);
                 StartCoroutine( DestroyAfter(newGhost, delay) );
             }
             StartCoroutine(respawn());
