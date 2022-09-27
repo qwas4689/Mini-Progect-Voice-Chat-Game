@@ -9,9 +9,7 @@ public class PlayerFindMonster : MonoBehaviourPun
 {
     [SerializeField]
     private AudioSource captureMonster;
-    private GameObject monster;
     public GameObject playerCapturingGameObject;
-    private MonsterManager monsterManager;
 
     private Slider playerCapturingSlider;
 
@@ -61,8 +59,9 @@ public class PlayerFindMonster : MonoBehaviourPun
                 {
                     captureMonster.Pause();
                     playerCapturingSlider.value = 0f;
-                    monster = other.gameObject;
-                    photonView.RPC("MonsterDestory", RpcTarget.All, monster);             
+
+
+                    other.gameObject.GetComponent<Monster>().photonView.RPC("MonsterDestory", RpcTarget.All);             
                     UIManager.Instance.photonView.RPC("AddScore", RpcTarget.MasterClient);
 
                     UIManager.Instance._playerMissingMonster.Invoke();
@@ -96,6 +95,9 @@ public class PlayerFindMonster : MonoBehaviourPun
     public void MonsterDestory(GameObject monster)
     {
         Debug.Log("ÆÄ±« È£ÃâµÊ");
-        Destroy(monster);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Destroy(monster);
+        }
     }
 }

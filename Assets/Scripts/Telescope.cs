@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Telescope : MonoBehaviour
+public class Telescope : MonoBehaviourPun
 {
     private Vector3 observerCameraPosition;
 
@@ -20,11 +21,15 @@ public class Telescope : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (photonView.IsMine)
             {
-                other.gameObject.transform.GetChild(2).position = observerCameraPosition;
-                other.gameObject.GetComponent<PlayerMove>().enabled = false;
-                Destroy(gameObject);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    other.gameObject.transform.GetChild(2).position = observerCameraPosition;
+                    other.gameObject.GetComponent<PlayerMove>().enabled = false;
+                    Destroy(gameObject);
+                }
+
             }
         }
     }

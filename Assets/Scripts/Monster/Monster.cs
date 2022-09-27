@@ -9,6 +9,9 @@ public class Monster : MonoBehaviourPun
     public void MonsterDestory()
     {
         Debug.Log("ÆÄ±« È£ÃâµÊ");
-        Destroy(gameObject);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 }
