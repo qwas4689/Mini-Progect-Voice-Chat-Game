@@ -15,11 +15,9 @@ public class MonsterManager : MonoBehaviourPun
 
     private int index;
     private int totalMonstersNumber = 8;
-    public bool playerSlider { get; set; }
 
     private void Start()
     {
-        playerSlider = false;
         if(PhotonNetwork.IsMasterClient)
         {
             createMonster();
@@ -33,10 +31,6 @@ public class MonsterManager : MonoBehaviourPun
         GameObject newMonster = PhotonNetwork.Instantiate("Monster", monsterSpwanePosition[index].position, Quaternion.identity);
         randomIndex();
 
-        if ( playerSlider)
-        {
-            destoryMonster(newMonster)
-        }
     }
 
     private void randomIndex()
@@ -47,7 +41,6 @@ public class MonsterManager : MonoBehaviourPun
     private void destoryMonster(GameObject monster)
     {
         PhotonNetwork.Destroy(monster);
-        playerSlider = false;
         createMonster();
     }
 }
