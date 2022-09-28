@@ -58,14 +58,10 @@ public class PlayerFindMonster : MonoBehaviourPun
                 if (playerCapturingSlider.value >= 1f)
                 {
                     captureMonster.Pause();
-                    playerCapturingSlider.value = 0f;
-
-
-                    other.gameObject.GetComponent<PhotonView>().RPC("MonsterDestory", RpcTarget.All);             
                     UIManager.Instance.photonView.RPC("AddScore", RpcTarget.MasterClient);
-
-                    UIManager.Instance._playerMissingMonster.Invoke();
+                    other.gameObject.GetComponent<PhotonView>().RPC("MonsterDestory", RpcTarget.All);             
                     playerCapturingSlider.gameObject.SetActive(false);
+                    playerCapturingSlider.value = 0f;
                 }
             }
             else
