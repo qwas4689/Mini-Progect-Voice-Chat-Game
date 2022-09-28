@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PlayerVoiceInit : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //GameObject
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.K))
+        {
+
+        }
         
     }
 }
