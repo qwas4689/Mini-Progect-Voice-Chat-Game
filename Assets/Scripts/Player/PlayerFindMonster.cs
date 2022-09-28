@@ -50,8 +50,7 @@ public class PlayerFindMonster : MonoBehaviourPun
         {
             playerCapturingGameObject.SetActive(true);
             captureMonster.Pause();
-            playerCapturingSlider.value = 0f;
-
+            
             if (Input.GetKey(KeyCode.F))
             {
                 captureMonster.UnPause();
@@ -69,6 +68,10 @@ public class PlayerFindMonster : MonoBehaviourPun
                     playerCapturingSlider.value += Time.deltaTime * 0.33f;
 
                 }
+            }
+            else
+            {
+                playerCapturingSlider.value = 0f;
             }
 
 
