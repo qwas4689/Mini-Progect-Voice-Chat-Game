@@ -12,11 +12,14 @@ public class PlayerFindMonster : MonoBehaviourPun
     public GameObject playerCapturingGameObject;
 
     private Slider playerCapturingSlider;
+    private Monster monster;
+
+    private bool isSliderMaxValue;
 
     private void Awake()
     {
-
         playerCapturingSlider = playerCapturingGameObject.GetComponent<Slider>();
+        
     }
 
     private void Start()
@@ -24,6 +27,8 @@ public class PlayerFindMonster : MonoBehaviourPun
         captureMonster.Play();
         captureMonster.Pause();
         playerCapturingGameObject.SetActive(false);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +41,11 @@ public class PlayerFindMonster : MonoBehaviourPun
         if (other.gameObject.tag == "Monster")
         {
             UIManager.Instance._playerFindMonster.Invoke();
+            playerCapturingSlider.value = 0f;
+            monster = other.GetComponent<Monster>();
+            isSliderMaxValue = false;
+            //monster.OnDie.RemoveListener(ResetPlayerCapturingSlider);
+            //monster.OnDie.AddListener(ResetPlayerCapturingSlider);
         }
     }
 
@@ -48,33 +58,36 @@ public class PlayerFindMonster : MonoBehaviourPun
 
         if (other.gameObject.tag == "Monster")
         {
+
+
             playerCapturingGameObject.SetActive(true);
             captureMonster.Pause();
             
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKey(KeyCode.F) && !isSliderMaxValue)
             {
                 captureMonster.UnPause();
 
                 if (playerCapturingSlider.value >= 1f)
                 {
+                    isSliderMaxValue = true;
                     UIManager.Instance.photonView.RPC("AddScore", RpcTarget.MasterClient);
-                    other.gameObject.GetComponent<PhotonView>().RPC("MonsterDestory", RpcTarget.All);
-                    captureMonster.Pause();
-                    playerCapturingSlider.gameObject.SetActive(false);
                     playerCapturingSlider.value = 0f;
+                    playerCapturingSlider.gameObject.SetActive(false);
+
+                    other.gameObject.GetComponent<PhotonView>().RPC("MonsterDestory", RpcTarget.Others);
+                    Destroy(other.gameObject);
+
+                    captureMonster.Pause();
                 }
                 else
                 {
                     playerCapturingSlider.value += Time.deltaTime * 0.33f;
-
                 }
             }
             else
             {
                 playerCapturingSlider.value = 0f;
             }
-
-
         }
     }
 
@@ -89,17 +102,9 @@ public class PlayerFindMonster : MonoBehaviourPun
         {
             captureMonster.Pause();
             UIManager.Instance._playerMissingMonster.Invoke();
-            playerCapturingSlider.gameObject.SetActive(false);
-        }
-    }
 
-    [PunRPC]
-    public void MonsterDestory(GameObject monster)
-    {
-        Debug.Log("ÆÄ±« È£ÃâµÊ");
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.Destroy(monster);
+            playerCapturingSlider.gameObject.SetActive(false);
+            isSliderMaxValue = false;
         }
     }
 }

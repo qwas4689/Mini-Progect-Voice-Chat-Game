@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-
 public class MonsterManager : MonoBehaviourPun
 {
     [SerializeField]
@@ -14,11 +13,16 @@ public class MonsterManager : MonoBehaviourPun
     private Transform[] monsterSpwanePosition;
 
     private int index;
+    private int inputIndex;
+    private bool[] indexBoolList;
+
     private int totalMonstersNumber = 8;
     private float waitForTime = 15f;
 
     private void Start()
     {
+        indexBoolList = new bool[7];
+
         if (PhotonNetwork.IsMasterClient)
         {
             StartCoroutine(createMonster());
@@ -30,14 +34,15 @@ public class MonsterManager : MonoBehaviourPun
         Debug.Assert(monsterPrefab != null);
         while (true)
         {
+            randomIndex();
             PhotonNetwork.Instantiate("Monster", monsterSpwanePosition[index].position, Quaternion.identity);
             yield return new WaitForSeconds(waitForTime);
-            randomIndex();
         }
     }
 
     private void randomIndex()
     {
         index = Random.Range(0, totalMonstersNumber);
+        
     }
 }

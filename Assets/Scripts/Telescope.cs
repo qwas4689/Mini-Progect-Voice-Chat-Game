@@ -12,14 +12,15 @@ public class Telescope : MonoBehaviourPun
 
     private void Awake()
     {
-        observerCameraPosition = new Vector3(0f, 15f, 0f);
-        ObserverWall.SetActive(false);
+        
     }
 
     private void Start()
     {
-
+        observerCameraPosition = new Vector3(0f, 15f, 0f);
+        ObserverWall.SetActive(false);
     }
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -29,13 +30,19 @@ public class Telescope : MonoBehaviourPun
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    ObserverWall.SetActive(true);
                     other.gameObject.transform.GetChild(3).position += observerCameraPosition;
 
-                    PhotonNetwork.Destroy(gameObject);
+                    ObserverWall.SetActive(true);
+                    photonView.RPC("LimitObserverMovement", RpcTarget.All);
                 }
 
             }
         }
+    }
+
+    [PunRPC]
+    public void LimitObserverMovement()
+    {
+        gameObject.SetActive(false);
     }
 }
