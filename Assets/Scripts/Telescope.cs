@@ -25,9 +25,10 @@ public class Telescope : MonoBehaviourPun
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    other.gameObject.transform.GetChild(2).position = observerCameraPosition;
+                    other.gameObject.transform.GetChild(3).position = observerCameraPosition;
                     other.gameObject.GetComponent<PlayerMove>().enabled = false;
-                    Destroy(gameObject);
+                    other.gameObject.GetComponent<Collider>().enabled = false;
+                    PhotonNetwork.Destroy(gameObject);
                 }
 
             }
