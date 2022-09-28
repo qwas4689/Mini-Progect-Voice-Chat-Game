@@ -7,9 +7,13 @@ public class Telescope : MonoBehaviourPun
 {
     private Vector3 observerCameraPosition;
 
+    [SerializeField]
+    private GameObject ObserverWall;
+
     private void Awake()
     {
         observerCameraPosition = new Vector3(0f, 15f, 0f);
+        ObserverWall.SetActive(false);
     }
 
     private void Start()
@@ -25,9 +29,9 @@ public class Telescope : MonoBehaviourPun
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    other.gameObject.transform.GetChild(3).position = observerCameraPosition;
-                    other.gameObject.GetComponent<PlayerMove>().enabled = false;
-                    other.gameObject.GetComponent<Collider>().enabled = false;
+                    ObserverWall.SetActive(true);
+                    other.gameObject.transform.GetChild(3).position += observerCameraPosition;
+
                     PhotonNetwork.Destroy(gameObject);
                 }
 

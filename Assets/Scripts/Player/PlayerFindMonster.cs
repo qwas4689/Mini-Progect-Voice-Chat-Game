@@ -49,26 +49,29 @@ public class PlayerFindMonster : MonoBehaviourPun
         if (other.gameObject.tag == "Monster")
         {
             playerCapturingGameObject.SetActive(true);
+            captureMonster.Pause();
+            playerCapturingSlider.value = 0f;
 
             if (Input.GetKey(KeyCode.F))
             {
                 captureMonster.UnPause();
-                playerCapturingSlider.value += Time.deltaTime * 0.33f;
 
                 if (playerCapturingSlider.value >= 1f)
                 {
-                    captureMonster.Pause();
                     UIManager.Instance.photonView.RPC("AddScore", RpcTarget.MasterClient);
-                    other.gameObject.GetComponent<PhotonView>().RPC("MonsterDestory", RpcTarget.All);             
+                    other.gameObject.GetComponent<PhotonView>().RPC("MonsterDestory", RpcTarget.All);
+                    captureMonster.Pause();
                     playerCapturingSlider.gameObject.SetActive(false);
                     playerCapturingSlider.value = 0f;
                 }
+                else
+                {
+                    playerCapturingSlider.value += Time.deltaTime * 0.33f;
+
+                }
             }
-            else
-            {
-                captureMonster.Pause();
-                playerCapturingSlider.value = 0f;
-            }
+
+
         }
     }
 

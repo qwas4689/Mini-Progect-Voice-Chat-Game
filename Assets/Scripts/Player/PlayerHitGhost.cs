@@ -7,6 +7,11 @@ public class PlayerHitGhost : MonoBehaviour
     [SerializeField]
     private AudioSource hitGhost;
 
+    private void Start()
+    {
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Ghost")
