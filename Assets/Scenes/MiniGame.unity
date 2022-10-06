@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 46051891}
   - component: {fileID: 46051890}
   m_Layer: 0
-  m_Name: CloseMenuSound
+  m_Name: UIClickSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1365,7 +1365,6 @@ GameObject:
   - component: {fileID: 275573823}
   - component: {fileID: 275573822}
   - component: {fileID: 275573821}
-  - component: {fileID: 275573820}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1393,20 +1392,6 @@ RectTransform:
   m_AnchoredPosition: {x: 213, y: 300}
   m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &275573820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275573818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37353f8674bdaff48a0e19de339b7a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1833403279}
-  exitButtonSound: {fileID: 46051890}
 --- !u!114 &275573821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,9 +1436,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 275573820}
-        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
-        m_MethodName: OnClickExitButton
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: OnClickExitGoalUIButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1590,7 +1575,6 @@ GameObject:
   - component: {fileID: 397389182}
   - component: {fileID: 397389181}
   - component: {fileID: 397389180}
-  - component: {fileID: 397389183}
   m_Layer: 5
   m_Name: ReStartButton
   m_TagString: Untagged
@@ -1663,8 +1647,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 397389183}
-        m_TargetAssemblyTypeName: ReStartButton, Assembly-CSharp
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: OnClickReStartButton
         m_Mode: 1
         m_Arguments:
@@ -1713,18 +1697,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397389178}
   m_CullTransparentMesh: 1
---- !u!114 &397389183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 397389178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5654b914a828dc04ab16d51f3aa6405e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &408513607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1709,6 @@ GameObject:
   - component: {fileID: 408513611}
   - component: {fileID: 408513610}
   - component: {fileID: 408513609}
-  - component: {fileID: 408513612}
   m_Layer: 5
   m_Name: ReStartButton
   m_TagString: Untagged
@@ -1810,8 +1781,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 408513612}
-        m_TargetAssemblyTypeName: ReStartButton, Assembly-CSharp
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: OnClickReStartButton
         m_Mode: 1
         m_Arguments:
@@ -1860,18 +1831,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408513607}
   m_CullTransparentMesh: 1
---- !u!114 &408513612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408513607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5654b914a828dc04ab16d51f3aa6405e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &466559318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,50 +2811,6 @@ MonoBehaviour:
   sceneViewId: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!1 &807357350
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 807357352}
-  - component: {fileID: 807357351}
-  m_Layer: 0
-  m_Name: IFRestartGame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &807357351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807357350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c64f958dcd1f41f4aa717541b51bd176, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &807357352
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 807357350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817550079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,7 +4042,7 @@ Transform:
   - {fileID: 3487354252878903936}
   - {fileID: 3487354252802458909}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189584067
 GameObject:
@@ -4572,7 +4487,6 @@ GameObject:
   - component: {fileID: 1294780344}
   - component: {fileID: 1294780343}
   - component: {fileID: 1294780342}
-  - component: {fileID: 1294780341}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -4600,20 +4514,6 @@ RectTransform:
   m_AnchoredPosition: {x: 213, y: 300}
   m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1294780341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294780339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37353f8674bdaff48a0e19de339b7a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1749172564}
-  exitButtonSound: {fileID: 46051890}
 --- !u!114 &1294780342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4658,9 +4558,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1294780341}
-        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
-        m_MethodName: OnClickExitButton
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: OnClickExitManualUIButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4952,7 +4852,6 @@ GameObject:
   - component: {fileID: 1387045815}
   - component: {fileID: 1387045814}
   - component: {fileID: 1387045813}
-  - component: {fileID: 1387045816}
   m_Layer: 5
   m_Name: CloseGameButton
   m_TagString: Untagged
@@ -5025,8 +4924,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1387045816}
-        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -5075,20 +4974,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387045811}
   m_CullTransparentMesh: 1
---- !u!114 &1387045816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387045811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37353f8674bdaff48a0e19de339b7a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1387045811}
-  exitButtonSound: {fileID: 0}
 --- !u!1 &1419469891
 GameObject:
   m_ObjectHideFlags: 0
@@ -5701,7 +5586,6 @@ GameObject:
   - component: {fileID: 1590816861}
   - component: {fileID: 1590816860}
   - component: {fileID: 1590816859}
-  - component: {fileID: 1590816862}
   m_Layer: 5
   m_Name: LoginScreenButton
   m_TagString: Untagged
@@ -5774,8 +5658,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1590816862}
-        m_TargetAssemblyTypeName: ReStartButton, Assembly-CSharp
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: OnClickReStartButton
         m_Mode: 1
         m_Arguments:
@@ -5824,18 +5708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590816857}
   m_CullTransparentMesh: 1
---- !u!114 &1590816862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590816857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5654b914a828dc04ab16d51f3aa6405e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1662568915
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,7 +6502,6 @@ GameObject:
   - component: {fileID: 1854751912}
   - component: {fileID: 1854751911}
   - component: {fileID: 1854751910}
-  - component: {fileID: 1854751909}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -6659,20 +6530,6 @@ RectTransform:
   m_AnchoredPosition: {x: -60, y: 60}
   m_SizeDelta: {x: 340, y: 120}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &1854751909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854751907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a651e76a17b272d4baac61e445ba9581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuUI: {fileID: 226743236}
-  exitButtonSound: {fileID: 46051890}
 --- !u!114 &1854751910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6717,8 +6574,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1854751909}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
         m_MethodName: OnClickMenuButton
         m_Mode: 1
         m_Arguments:
@@ -6779,7 +6636,6 @@ GameObject:
   - component: {fileID: 1937671456}
   - component: {fileID: 1937671455}
   - component: {fileID: 1937671454}
-  - component: {fileID: 1937671453}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -6808,20 +6664,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &1937671453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937671451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37353f8674bdaff48a0e19de339b7a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 226743236}
-  exitButtonSound: {fileID: 46051890}
 --- !u!114 &1937671454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6866,9 +6708,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1937671453}
-        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
-        m_MethodName: OnClickExitButton
+      - m_Target: {fileID: 2051075529}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: OnClickExitMenuUIButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7286,6 +7128,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001345205}
   m_CullTransparentMesh: 1
+--- !u!1 &2051075528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2051075530}
+  - component: {fileID: 2051075529}
+  m_Layer: 0
+  m_Name: Buttons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2051075529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051075528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced8cd2c6b0a0d64584df10873b25226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goalUI: {fileID: 1833403279}
+  _manualUI: {fileID: 1749172564}
+  _exitButtonSound: {fileID: 46051890}
+  _menuUI: {fileID: 226743236}
+--- !u!4 &2051075530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051075528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2088582153
 GameObject:
   m_ObjectHideFlags: 0
