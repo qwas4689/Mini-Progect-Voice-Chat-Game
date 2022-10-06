@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
 
-public class ReStartButton : MonoBehaviourPun
+public class Buttons : MonoBehaviour
 {
     public void OnClickReStartButton()
     {

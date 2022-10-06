@@ -17,6 +17,6 @@ public class Ghost : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / Spawner.delay);  
+        transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / Spawner.delay);
     }
 }

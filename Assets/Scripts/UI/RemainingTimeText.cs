@@ -45,7 +45,6 @@ public class RemainingTimeText : MonoBehaviourPun, IPunObservable
     {
         if (PhotonNetwork.IsMasterClient)
         {
-
             cumulativeTime += Time.deltaTime;
 
             if (cumulativeTime > 1f)
@@ -69,11 +68,8 @@ public class RemainingTimeText : MonoBehaviourPun, IPunObservable
                 GameManager.Instance.photonView.RPC("GameOver", RpcTarget.All);
                 Time.timeScale = 0;
             }
-
         }
     }
-
-
 
     [PunRPC]
     public void UpdateTimerText(int minute, int second)

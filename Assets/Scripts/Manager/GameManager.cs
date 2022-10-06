@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
     public int captureScore = 0;
 
-
-
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)

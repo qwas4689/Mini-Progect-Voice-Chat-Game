@@ -14,6 +14,4 @@ public class PlayerSpawner : MonoBehaviourPunCallbacks
         PlayerMove player = playerObject.GetComponent<PlayerMove>();
         player.photonView.RPC("SetNickname", RpcTarget.All, data.Nickname);
     }
-   
-   
 }

@@ -23,9 +23,7 @@ public class GhostSpawer : MonoBehaviourPun
     private AudioSource spawnGhostSound;
 
     private Vector3[][] ghostPos;
-     
-    // [동/서/남/북][0번째 고스트 위치 어디어디어디] -> 9.5 / 0.5 / 10.5
-    //              [1번째 고스트 위치 어디어디어디] -> 9.5 / 0.5 / 5.5
+
     private void Awake()
     {
         Ghost.Spawner = this;
@@ -69,17 +67,15 @@ public class GhostSpawer : MonoBehaviourPun
     //    };
     private void spawnGhost()
     {
-
-        Debug.Log("들어오긴 하는거지..?");
         spawnGhostSound.Play();
-            // 0 : Down, 1 : Left, 2 : Up, 3 : Right
-            int randomDirection = Random.Range(0, 4);
-            foreach (Vector3 pos in ghostPos[randomDirection])
-            {
-                GameObject newGhost = PhotonNetwork.Instantiate("Ghost", pos, Quaternion.Euler(0, 90 * randomDirection, 0));
-                StartCoroutine( DestroyAfter(newGhost, delay) );
-            }
-            StartCoroutine(respawn());
+        // 0 : Down, 1 : Left, 2 : Up, 3 : Right
+        int randomDirection = Random.Range(0, 4);
+        foreach (Vector3 pos in ghostPos[randomDirection])
+        {
+            GameObject newGhost = PhotonNetwork.Instantiate("Ghost", pos, Quaternion.Euler(0, 90 * randomDirection, 0));
+            StartCoroutine(DestroyAfter(newGhost, delay));
+        }
+        StartCoroutine(respawn());
     }
     private IEnumerator DestroyAfter(GameObject newGhost, float delay)
     {
@@ -93,6 +89,3 @@ public class GhostSpawer : MonoBehaviourPun
         spawnGhost();
     }
 }
-
-// 리팩토링 할 때 대리자 이벤트
-// float 이중배열

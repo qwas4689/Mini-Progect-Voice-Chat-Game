@@ -5,11 +5,6 @@ using Photon.Pun;
 
 public class ExitPotal : MonoBehaviourPun
 {
-    void Start()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")

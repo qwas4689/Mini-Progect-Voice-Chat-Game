@@ -12,14 +12,12 @@ public class PlayerFindMonster : MonoBehaviourPun
     public GameObject playerCapturingGameObject;
 
     private Slider playerCapturingSlider;
-    private Monster monster;
 
     private bool isSliderMaxValue;
 
     private void Awake()
     {
         playerCapturingSlider = playerCapturingGameObject.GetComponent<Slider>();
-        
     }
 
     private void Start()
@@ -27,8 +25,6 @@ public class PlayerFindMonster : MonoBehaviourPun
         captureMonster.Play();
         captureMonster.Pause();
         playerCapturingGameObject.SetActive(false);
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,10 +38,7 @@ public class PlayerFindMonster : MonoBehaviourPun
         {
             UIManager.Instance._playerFindMonster.Invoke();
             playerCapturingSlider.value = 0f;
-            monster = other.GetComponent<Monster>();
             isSliderMaxValue = false;
-            //monster.OnDie.RemoveListener(ResetPlayerCapturingSlider);
-            //monster.OnDie.AddListener(ResetPlayerCapturingSlider);
         }
     }
 
@@ -58,8 +51,6 @@ public class PlayerFindMonster : MonoBehaviourPun
 
         if (other.gameObject.tag == "Monster")
         {
-
-
             playerCapturingGameObject.SetActive(true);
             captureMonster.Pause();
             
